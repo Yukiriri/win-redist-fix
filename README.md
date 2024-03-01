@@ -14,7 +14,7 @@ git clone https://github.com/Yukiriri/win-redist-fix.git
 # 更新
 
 ```
-cd redistfix
+cd win-redist-fix
 git pull
 ```
 
