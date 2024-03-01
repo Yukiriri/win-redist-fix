@@ -1,5 +1,5 @@
 @echo off & chcp 65001 >nul
-cd %~dp0
+cd /d %~dp0
 
 echo VC++...
 for /r %%i in (vc\*.exe) do (
