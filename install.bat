@@ -1,14 +1,13 @@
-@echo off & chcp 65001 >nul
-cd /d %~dp0
+@echo off & pushd %~dp0
 
 echo VC++...
-for /r %%i in (vc\*.exe) do (
+for %%i in (vc\*.exe) do (
     "%%i" /passive /norestart
 )
 echo VC++ OK
 
 echo .NET...
-for /r %%i in (dotnet\*.exe) do (
+for %%i in (dotnet\*.exe) do (
     "%%i" /passive /norestart
 )
 echo .NET OK
