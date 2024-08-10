@@ -12,8 +12,9 @@ for %%i in (dotnet\*.exe) do (
 )
 echo .NET OK
 
-echo DX9.0c...
-start /wait dx9.0c\DXSETUP.exe /silent
-echo DX9.0c OK
+echo DX...
+dx\directx_Jun2010_redist.exe /Q /T:%TEMP%\directx_Jun2010_redist
+%TEMP%\directx_Jun2010_redist\DXSETUP.exe /silent
+echo DX OK
 
 pause
