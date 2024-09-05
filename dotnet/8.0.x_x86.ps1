@@ -21,5 +21,3 @@ $f_name = $Matches.0
 Write-Output $f_name
 
 Invoke-WebRequest -UseBasicParsing $dl_url -OutFile $f_name
-
-Pause
