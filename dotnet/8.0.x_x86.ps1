@@ -1,23 +1,19 @@
 
-$d_ver = "8.0"
-$d_arch = "x86"
+$dl_ver = "8.0"
+$dl_arch = "x86"
 
 
-$d_uri = "https://dotnet.microsoft.com/download/dotnet/" + $d_ver
-$d_uri_arch = "thank-you/runtime-desktop-.*-windows-" + $d_arch + "-installer"
+$main_page_url = "https://dotnet.microsoft.com/download/dotnet/" + $dl_ver
+$main_page_content = Invoke-WebRequest -URI $main_page_url | Select-Object -ExpandProperty Content
 
-$resp = Invoke-WebRequest -URI $d_uri
-$resp.Content -match $d_uri_arch
-$dl_url = "https://dotnet.microsoft.com/download/dotnet/" + $Matches.0
-Write-Output $dl_url
+$dl_page_pattern = "/download/.*/runtime-desktop-.*-windows-" + $dl_arch + "-installer"
+$dl_page_url = "https://dotnet.microsoft.com" + [regex]::Matches($main_page_content, $dl_page_pattern)[0].Value
+$dl_page_content = Invoke-WebRequest -URI $dl_page_url | Select-Object -ExpandProperty Content
 
-$resp = Invoke-WebRequest -URI $dl_url
-$resp.Content -match "https://download.visualstudio.microsoft.com/.*exe"
-$dl_url = $Matches.0
-Write-Output $dl_url
+$dl_uri_pattern = "https://.*?\.exe"
+$dl_uri = [regex]::Matches($dl_page_content, $dl_uri_pattern)[0].Value
+$dl_outfile = [regex]::Matches($dl_uri, "(?!/)windowsdesktop-runtime.*exe")[0].Value
+Write-Output $dl_uri
+Write-Output $dl_outfile
 
-$dl_url -match "windowsdesktop-runtime-.*"
-$f_name = $Matches.0
-Write-Output $f_name
-
-Invoke-WebRequest -UseBasicParsing $dl_url -OutFile $f_name
+Invoke-WebRequest -URI $dl_uri -OutFile $dl_outfile
