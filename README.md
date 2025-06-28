@@ -16,7 +16,3 @@ git clone https://github.com/Yukiriri/win-redist-fix.git
 - [https://dotnet.microsoft.com/download/dotnet](https://dotnet.microsoft.com/download/dotnet)
 - [https://learn.microsoft.com/cpp/windows/latest-supported-vc-redist?view=msvc-170](https://learn.microsoft.com/cpp/windows/latest-supported-vc-redist?view=msvc-170)
 - [https://www.microsoft.com/download/details.aspx?id=8109](https://www.microsoft.com/download/details.aspx?id=8109)
-
-## 无用吹牛
-我很有自信，我的运行库修复方案是所有民间方案里最有官方水准的（）  
-因为我收集的版本最符合标准也最新，而且可以因需定制自助餐。  
