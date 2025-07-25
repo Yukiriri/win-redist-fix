@@ -1,7 +1,9 @@
 
-$dl_ver = "8.0"
-$dl_arch = "x86"
+$dl_ver = $args[0]
+$dl_arch = $args[1]
 
+Write-Output $dl_ver $dl_arch
+Pause
 
 $main_page_url = "https://dotnet.microsoft.com/download/dotnet/" + $dl_ver
 $main_page_content = Invoke-WebRequest -URI $main_page_url | Select-Object -ExpandProperty Content
